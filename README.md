@@ -12,3 +12,4 @@ This project demonstrates the configuration of a RAID 1 (Mirror) array using `md
 1. Built a custom Ubuntu-based Docker image.
 2. Provisioned 100MB virtual disk images.
 3. Successfully initialized `md0` as an active RAID 1 mirror.
+![RAID Verification](./raid-verification.jpg)
