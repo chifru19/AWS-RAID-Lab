@@ -1,0 +1,13 @@
+#!/bin/bash
+# Create dummy disks
+dd if=/dev/zero of=/tmp/disk1.img bs=1M count=100
+dd if=/dev/zero of=/tmp/disk2.img bs=1M count=100
+
+# Setup device nodes
+mknod /dev/loop10 b 7 10
+mknod /dev/loop11 b 7 11
+
+# Bind and Mirror
+losetup /dev/loop10 /tmp/disk1.img
+losetup /dev/loop11 /tmp/disk2.img
+mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/loop10 /dev/loop11
